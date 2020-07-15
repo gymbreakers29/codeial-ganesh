@@ -1,0 +1,24 @@
+header {
+  width: 100vw;
+  height: 8vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; }
+  header a {
+    text-decoration: none; }
+  header a:link, header a:visited, header p {
+    color: wheat;
+    font-family: Flamenco; }
+  header #heading {
+    margin-left: 4%;
+    margin-top: 1%; }
+    header #heading p {
+      margin: 0;
+      font-size: 2.4rem; }
+  header #header-nav {
+    margin-right: 5%; }
+    header #header-nav ul li {
+      font-size: 1.5em;
+      display: inline-block;
+      margin: 0 25px 0px 0; }

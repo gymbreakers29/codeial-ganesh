@@ -78,6 +78,7 @@ module.exports.signIn = function(req,res){
 }
 
 module.exports.create= function(req,res){
+    console.log("here");
     if(req.body.password!=req.body.confirm_password){
         return res.redirect('back');
 
@@ -96,6 +97,8 @@ module.exports.create= function(req,res){
         return res.render('user_sign_in');
             
         })
+    }else{
+        return res.redirect('back');
     }
    
 })

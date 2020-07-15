@@ -1,0 +1,30 @@
+#friends-list {
+  width: 25vw;
+  display: inline-block;
+  vertical-align: top;
+  padding: 1em; }
+
+#display-post {
+  width: 50vw;
+  display: inline-block;
+  padding: 1em; }
+  #display-post #new-post {
+    width: 90%;
+    height: 15%;
+    padding: 1em;
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 2%; }
+
+#post-container {
+  width: 50vw;
+  height: 80vh;
+  overflow-y: scroll; }
+
+#post-container::-webkit-scrollbar {
+  display: none; }
+
+p {
+  color: wheat;
+  font-family: candara;
+  font-size: 1.2em; }

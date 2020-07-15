@@ -1,9 +1,13 @@
 const express = require('express');
+const env = require('./config/environment')
+const morgan = require('morgan')
+
  const port = 8000
  const cookieParser = require('cookie-parser');
  const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose')
 const app =express();
+require('./config/view-helper')(app)
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
@@ -13,11 +17,14 @@ const sassMiddleware =require('node-sass-middleware');
 const flash = require('connect-flash')
 const customMware = require('./config/middleware')
 const passportGoogle = require('./config/passport-google-oauth2-strategy')
+const path = require('path')
+
+
 
 
 app.use(sassMiddleware({
-    src: './assets/scss',
-    dest: './assets/css',
+    src: path.join(__dirname,env.asset_path,'scss'),
+    dest: path.join(__dirname,env.asset_path,'css'),
     debug: false,
     outputStyle: 'extended',
     prefix: '/css'
@@ -26,8 +33,10 @@ app.use(sassMiddleware({
     
  app.use(express.urlencoded());
  app.use(cookieParser());
- app.use(express.static('./assets'));  
+ app.use(express.static(env.asset_path));  
  app.use('/uploads',express.static(__dirname+'/uploads'));
+
+ app.use(morgan(env.morgan.mode, env.morgan.options))
 
  app.use(expressLayouts);
   
@@ -38,7 +47,7 @@ app.use(sassMiddleware({
 
  app.use(session({
      name: 'codeial',
-     secret: 'blahsomething',
+     secret: env.session_cookie_key,
      resave:false,
      cookie:{
          maxAge:(1000*60*100)
